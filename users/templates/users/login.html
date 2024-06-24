@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock modal_cart %}
+
 {% block content %}
     <div class="row">
         <div class="container mt-5">
@@ -9,7 +13,7 @@
                     <h2 class="text-center mb-4">Авторизация</h2>
                     <form action="{% url "user:login" %}" method="post">
                         {% csrf_token %}
-                        
+
                         {% if request.GET.next %}
                             <input type="hidden" name="next" value={{ request.GET.next }}>
                         {% endif %}
